@@ -1,88 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
-        .container {
-            background: #fff;
-            padding: 25px 30px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            width: 100%;
-            margin-top: 20px;
-            padding: 10px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #5a67d8;
-        }
-    </style>
+  <title>Registration</title>
 </head>
 <body>
 
-<div class="container">
-    <h2>Registration</h2>
-    <form>
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your name" required>
+<h2>Registration Form</h2>
 
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
+<form id="regForm">
+  <input name="entry.1044749406" placeholder="Name" required><br><br>
 
-        <label>Phone Number</label>
-        <input type="tel" placeholder="Enter phone number" required>
+  <input name="entry.2014625788" type="email" placeholder="Email" required><br><br>
 
-        <label>Course</label>
-        <select required>
-            <option value="">Select course</option>
-            <option>B.Tech</option>
-            <option>B.Sc</option>
-            <option>BCA</option>
-            <option>MCA</option>
-        </select>
+  <input name="entry.576397267" placeholder="Phone" required><br><br>
 
-        <label>Password</label>
-        <input type="password" placeholder="Create password" required>
+  <input name="entry.2105707507" type="password" placeholder="Password" required><br><br>
 
-        <button type="submit">Register</button>
-    </form>
-</div>
+  <button type="submit">Register</button>
+</form>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLScf9Xho5LXzOKkp9QPgVxaJtVE6VNqrxl0veWwTEdduXXMNSg/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    body: new FormData(this)
+  });
+
+  alert("Registration successful!");
+  this.reset();
+});
+</script>
 
 </body>
 </html>
